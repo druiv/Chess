@@ -1,5 +1,7 @@
 package com.dz;
 
+import java.util.Scanner;
+
 public class Board {
     public String[][] board = new String[8][8];
     public final String[] NOTEROW = "A,B,C,D,E,F,G,H".split(",");
@@ -46,4 +48,25 @@ public class Board {
         }
         System.out.println(noterow); //подпишем доску
     }
+
+    public boolean makeMovie(int movieNumber) {
+        try (Scanner in = new Scanner(System.in)) {
+            boolean isMoved = false;
+
+            while(!isMoved) {
+                String mv = in.nextLine().trim().toUpperCase();
+                if ("СТОП".equals(mv) || "STOP".equals(mv)) {
+                    System.out.println("Игра окончена");
+                    System.exit(0);
+                }
+                System.out.println("Ввод: " + mv);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return true;
+
+    }
+
 }
