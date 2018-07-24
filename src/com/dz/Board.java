@@ -1,21 +1,24 @@
 package com.dz;
 
+import java.util.Scanner;
+
 public class Board {
-    public String[][] board = new String[8][8];
+    public String[][] desk = new String[8][8];
     public final String[] NOTEROW = "A,B,C,D,E,F,G,H".split(",");
     final String[] INITROW = "Л ,К ,С ,Ф ,Кр,С ,К ,Л ".split(",");
+    final String FIGURES = "П,Л,К,С,Ф,Кр";
 
     public Board(){
 
         for(int i = 2; i<6; i++)
             for (int j = 0; j<8; j++)
-                board [i][j] = "";
+                desk [i][j] = "";
 
         for (int j = 0; j<8; j++){
-            board[6][j] = "п ";
-            board[1][j] = "П ";
-            board[0][j] = INITROW[j];
-            board[7][j] = INITROW[j].toLowerCase();
+            desk[6][j] = "п ";
+            desk[1][j] = "П ";
+            desk[0][j] = INITROW[j];
+            desk[7][j] = INITROW[j].toLowerCase();
         }
     }
 
@@ -34,10 +37,10 @@ public class Board {
             for (int j = 0; j<8; j++){
                 if(j == 0)
                     sb = sb.append(i+1).append(" ");
-                if (board[i][j].trim().isEmpty())
-                    sb = sb.append("..");
+                if (desk[i][j].trim().isEmpty())
+                    sb = sb.append(". ");
                 else
-                    sb = sb.append(board[i][j]);
+                    sb = sb.append(desk[i][j]);
                 if(j == 7)
                     sb = sb.append(i+1).append(" ");
             }
@@ -46,4 +49,16 @@ public class Board {
         }
         System.out.println(noterow); //подпишем доску
     }
+
+    public boolean makeMovie(int movieNumber) {
+        Move move = new Move(this, movieNumber);
+
+        move.readMove();
+        if(!move.checkMove()){
+            return false;
+        }
+
+        return true;
+    }
+
 }
