@@ -13,7 +13,7 @@ public class Move implements IMoveCoord{
         this.movieNumber = movieNumber;
     }
 
-    public IMoveCoord readMove(){
+    public void readMove(){
         final String INCORR = "Некорректный ввод. Пример: e2e4";
 
         try (Scanner in = new Scanner(System.in)) {
@@ -88,7 +88,10 @@ public class Move implements IMoveCoord{
             System.out.println(ex.getMessage());
         }
 
-        return moveCoord;
+    }
+
+    public boolean checkMove(){
+        return true;
     }
 }
 

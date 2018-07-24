@@ -52,7 +52,12 @@ public class Board {
 
     public boolean makeMovie(int movieNumber) {
         Move move = new Move(this, movieNumber);
+
         move.readMove();
+        if(!move.checkMove()){
+            return false;
+        }
+
         return true;
     }
 
