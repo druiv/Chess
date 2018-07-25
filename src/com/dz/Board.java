@@ -22,7 +22,6 @@ public class Board {
             desk[0][j] = INITROW[j];
             desk[7][j] = INITROW[j].toLowerCase();
         }
-        desk[1][0] = "";
     }
 
     public void showBoard() {
