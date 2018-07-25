@@ -17,8 +17,8 @@ public class Rook extends Figure implements IFigure{
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
 
-        dx = dx == 0 ? dx : dx / dx;
-        dy = dy == 0 ? dy : dy / dy;
+        dx = dx == 0 ? dx : dx / Math.abs(dx);
+        dy = dy == 0 ? dy : dy / Math.abs(dy);
 
         for (int i = 0; i < 4; i++) {
             if (matrix[i][0] == dx && matrix[i][1] == dy) {
