@@ -77,7 +77,7 @@ public class Move {
                     continue;
                 }
 
-                if (movieNumber % 2 == 0 && board.FIGURES.indexOf(board.desk[r[1]][r[0]]) < 0) {
+                if (movieNumber % 2 == 0 && board.FIGURES.indexOf(board.desk[r[1]][r[0]].trim()) > 0) {
                     System.out.println("Сейчас ход черных");
                     continue;
                 }
