@@ -8,14 +8,14 @@ public abstract class Figure implements IFigure {
     public int[] from;
     public int[] to;
 
-    public boolean checkMove(IMoveCoord moveCoord, Board board) {
-        return false;
+    public String checkMove(IMoveCoord moveCoord, Board board) {
+        return "";
     }
     public void findTemlate(IMoveCoord moveCoord) {
     }
 }
 
 interface IFigure {
-    public boolean checkMove(IMoveCoord moveCoord, Board board);
+    public String checkMove(IMoveCoord moveCoord, Board board);
     public void findTemlate(IMoveCoord moveCoord);
 }

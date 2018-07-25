@@ -28,8 +28,8 @@ public class Rook extends Figure implements IFigure {
         }
     }
 
-    public boolean checkMove(IMoveCoord moveCoord, Board board) {
-        boolean result = true;
+    public String checkMove(IMoveCoord moveCoord, Board board) {
+        String result = "";
         boolean isTo = false;
         int x = from[1];
         int y = from[0];
@@ -42,7 +42,7 @@ public class Rook extends Figure implements IFigure {
                 isTo = true;
 
             if (!isTo && !jump && !board.desk[y][x].isEmpty()) {
-                result = false;
+                result = "Фигура не может перепрыгнуть";
                 break;
             }
 

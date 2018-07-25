@@ -56,9 +56,7 @@ public class Board {
         Move move = new Move(this, movieNumber);
 
         move.readMove();
-        if (!move.makeMove()) {
-            return false;
-        }
+        move.makeMove();
 
         return true;
     }

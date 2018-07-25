@@ -97,6 +97,13 @@ public class Move {
                 }
 
                 moveCoord = new MoveCoord(r);
+
+                String msg = checkFigMove();
+                if (!msg.isEmpty()) {
+                    System.out.println(msg);
+                    continue;
+                }
+
                 isCheked = true;
 
             }
@@ -105,7 +112,7 @@ public class Move {
         }
     }
 
-    public boolean makeMove() {
+    public String checkFigMove() {
         int[] fr = moveCoord.getFrom();
         String fig = board.desk[fr[0]][fr[1]].trim().toUpperCase();
         IFigure Fig = null;
@@ -117,16 +124,16 @@ public class Move {
         }
 
         Fig.findTemlate(moveCoord);
-        boolean result = Fig.checkMove(moveCoord, board);
-
-        if (result) { // делаем ход
-            int[] t = moveCoord.getTo();
-            board.desk[t[0]][t[1]] = board.desk[fr[0]][fr[1]];
-            board.desk[fr[0]][fr[1]] = "";
-        }
+        String result = Fig.checkMove(moveCoord, board);
 
         return result;
+    }
 
+    public void makeMove() {
+        int[] fr = moveCoord.getFrom();
+        int[] t = moveCoord.getTo();
+        board.desk[t[0]][t[1]] = board.desk[fr[0]][fr[1]];
+        board.desk[fr[0]][fr[1]] = "";
     }
 }
 
