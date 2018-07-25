@@ -13,9 +13,10 @@ public class Rook extends Figure implements IFigure {
         super.to = to;
     }
 
-    public void findTemlate(IMoveCoord moveCoord) {
+    public String findTemlate(IMoveCoord moveCoord) {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
+        String result = "";
 
         dx = dx == 0 ? dx : dx / Math.abs(dx);
         dy = dy == 0 ? dy : dy / Math.abs(dy);
@@ -26,6 +27,10 @@ public class Rook extends Figure implements IFigure {
                 break;
             }
         }
+        if (template < 0)
+            result = "Так не ходят";
+
+        return result;
     }
 
     public String checkMove(IMoveCoord moveCoord, Board board) {

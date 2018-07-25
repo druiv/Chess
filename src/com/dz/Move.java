@@ -116,6 +116,7 @@ public class Move {
         int[] fr = moveCoord.getFrom();
         String fig = board.desk[fr[0]][fr[1]].trim().toUpperCase();
         IFigure Fig = null;
+        String result="";
 
         switch (fig) {
             case "Л":
@@ -123,9 +124,11 @@ public class Move {
                 break;
         }
 
-        Fig.findTemlate(moveCoord);
-        String result = Fig.checkMove(moveCoord, board);
+        result = Fig.findTemlate(moveCoord);
+        if(!result.isEmpty())
+            return result;
 
+        result = Fig.checkMove(moveCoord, board);
         return result;
     }
 

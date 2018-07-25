@@ -11,11 +11,12 @@ public abstract class Figure implements IFigure {
     public String checkMove(IMoveCoord moveCoord, Board board) {
         return "";
     }
-    public void findTemlate(IMoveCoord moveCoord) {
+    public String findTemlate(IMoveCoord moveCoord)  {
+        return "";
     }
 }
 
 interface IFigure {
     public String checkMove(IMoveCoord moveCoord, Board board);
-    public void findTemlate(IMoveCoord moveCoord);
+    public String findTemlate(IMoveCoord moveCoord);
 }
