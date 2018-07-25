@@ -122,6 +122,9 @@ public class Move {
             case "Л":
                 Fig = new Rook(moveCoord);
                 break;
+            case "К":
+                Fig = new Knight(moveCoord);
+                break;
         }
 
         result = Fig.findTemlate(moveCoord);
