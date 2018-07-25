@@ -77,8 +77,22 @@ public class Move {
                     continue;
                 }
 
-                if (movieNumber % 2 == 0 && board.FIGURES.indexOf(board.desk[r[1]][r[0]].trim()) > 0) {
+                int colorFrom = board.FIGURES.indexOf(board.desk[r[1]][r[0]].trim());
+                int colorTo = board.FIGURES.indexOf(board.desk[r[3]][r[2]].trim());
+
+                if (movieNumber % 2 == 0 && colorFrom >= 0) {
                     System.out.println("Сейчас ход черных");
+                    continue;
+                }
+
+                if (movieNumber % 2 != 0 && colorFrom < 0) {
+                    System.out.println("Сейчас ход белых");
+                    continue;
+                }
+
+                if ((!board.desk[r[3]][r[1]].isEmpty())
+                        && ((colorFrom < 0 && colorTo < 0) || (colorFrom >= 0 && colorTo >= 0))) {
+                    System.out.println("Фигура не может рубить своих");
                     continue;
                 }
 

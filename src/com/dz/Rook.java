@@ -1,6 +1,6 @@
 package com.dz;
 
-public class Rook extends Figure implements IFigure{
+public class Rook extends Figure implements IFigure {
     Rook(IMoveCoord moveCoord) {
         //super.Figure(moveCoord);
         int matrix[][] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
