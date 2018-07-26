@@ -6,6 +6,8 @@ public class Test {
         Board chessboard = new Board();
         chessboard.InitBoard();
         chessboard.desk[1][0] = "";
+        chessboard.desk[1][1] = "";
+        chessboard.desk[1][2] = "";
         chessboard.desk[6][0] = "";
 
         chessboard.showBoard();
