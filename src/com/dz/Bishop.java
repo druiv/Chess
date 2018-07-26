@@ -12,6 +12,7 @@ public class Bishop extends Figure implements IFigure {
         super.to = to;
     }
 
+    @Override
     public String findTemlate() {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];

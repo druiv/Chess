@@ -13,6 +13,7 @@ public class Knight extends Figure implements IFigure {
         super.to = to;
     }
 
+    @Override
     public String findTemlate() {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
@@ -30,6 +31,7 @@ public class Knight extends Figure implements IFigure {
         return result;
     }
 
+    @Override
     public String checkMove(Board board) {
         return ""; //конь умеет прыгать
     }
