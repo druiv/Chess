@@ -127,8 +127,11 @@ public class Move {
             case "Л":
                 Fig = new Rook(moveCoord);
                 break;
-            case "К":
+            case "К": //кириллица
                 Fig = new Knight(moveCoord);
+                break;
+            case "С": //кириллица
+                Fig = new Bishop(moveCoord);
                 break;
         }
 
