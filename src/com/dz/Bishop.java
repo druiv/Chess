@@ -33,9 +33,4 @@ public class Bishop extends Figure implements IFigure {
 
         return "";
     }
-
-    public String checkMove(Board board) {
-        return super.checkMove(board);
-    }
-
 }
