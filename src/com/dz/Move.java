@@ -133,6 +133,9 @@ public class Move {
             case "С": //кириллица
                 Fig = new Bishop(moveCoord);
                 break;
+            case "Ф": //кириллица
+                Fig = new Queen(moveCoord);
+                break;
         }
 
         result = Fig.findTemlate();
