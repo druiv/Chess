@@ -139,6 +139,9 @@ public class Move {
             case "КР": //кириллица
                 Fig = new King(moveCoord);
                 break;
+            case "П":
+                Fig = new Pawn(moveCoord);
+                break;
         }
 
         result = Fig.findTemlate();
