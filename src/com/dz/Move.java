@@ -72,6 +72,11 @@ public class Move {
                     continue;
                 }
 
+                if (r[1] == r[3] && r[0] == r[2]) { // нечем ходить
+                    System.out.println("Прыжок на месте -- это провокация");
+                    continue;
+                }
+
                 if (board.desk[r[1]][r[0]].isEmpty()) { // нечем ходить
                     System.out.println("В позиции " + mvc[0] + mvc[1] + " ничего нет");
                     continue;
@@ -116,7 +121,7 @@ public class Move {
         int[] fr = moveCoord.getFrom();
         String fig = board.desk[fr[0]][fr[1]].trim().toUpperCase();
         IFigure Fig = null;
-        String result="";
+        String result = "";
 
         switch (fig) {
             case "Л":
@@ -128,7 +133,7 @@ public class Move {
         }
 
         result = Fig.findTemlate(moveCoord);
-        if(!result.isEmpty())
+        if (!result.isEmpty())
             return result;
 
         result = Fig.checkMove(moveCoord, board);
