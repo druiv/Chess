@@ -32,7 +32,7 @@ public class Knight extends Figure implements IFigure {
     }
 
     public String checkMove(IMoveCoord moveCoord, Board board) {
-        return "";
+        return ""; //конь умеет прыгать
     }
 
 }
