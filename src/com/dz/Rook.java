@@ -25,7 +25,7 @@ public class Rook extends Figure implements IFigure {
         // а другое должно быть того же знака
         for (int i = 0; i < 4; i++) {
             if (((matrix[i][0] == 0 && dx == 0) || (matrix[i][0] * dx > 0)) &&
-                    (matrix[i][1] == 0 && dy == 0) || (matrix[i][1] * dy > 0)) {
+                    ((matrix[i][1] == 0 && dy == 0) || (matrix[i][1] * dy > 0))) {
                 template = i;
                 break;
             }
