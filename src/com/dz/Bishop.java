@@ -12,7 +12,7 @@ public class Bishop extends Figure implements IFigure {
         super.to = to;
     }
 
-    public String findTemlate(IMoveCoord moveCoord) {
+    public String findTemlate() {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
 
@@ -34,8 +34,8 @@ public class Bishop extends Figure implements IFigure {
         return "";
     }
 
-    public String checkMove(IMoveCoord moveCoord, Board board) {
-        return super.checkMove(moveCoord, board);
+    public String checkMove(Board board) {
+        return super.checkMove(board);
     }
 
 }

@@ -3,7 +3,6 @@ package com.dz;
 public class Knight extends Figure implements IFigure {
 
     Knight(IMoveCoord moveCoord) {
-        //super.Figure(moveCoord);
         int matrix[][] = {{1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}, {-2, -1}, {-2, 1}, {-1, 2}};
         int[] from = moveCoord.getFrom();
         int[] to = moveCoord.getTo();
@@ -14,7 +13,7 @@ public class Knight extends Figure implements IFigure {
         super.to = to;
     }
 
-    public String findTemlate(IMoveCoord moveCoord) {
+    public String findTemlate() {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
         String result = "";
@@ -31,7 +30,7 @@ public class Knight extends Figure implements IFigure {
         return result;
     }
 
-    public String checkMove(IMoveCoord moveCoord, Board board) {
+    public String checkMove(Board board) {
         return ""; //конь умеет прыгать
     }
 

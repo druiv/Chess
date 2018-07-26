@@ -1,14 +1,13 @@
 package com.dz;
 
 public abstract class Figure implements IFigure {
-    public IMoveCoord moveCoord;
     public int matrix[][];
     public int template = -1;
     public boolean jump;
     public int[] from;
     public int[] to;
 
-    public String checkMove(IMoveCoord moveCoord, Board board) {
+    public String checkMove(Board board) {
         String result = "";
         boolean isTo = false;
         int x = from[1];
@@ -29,12 +28,12 @@ public abstract class Figure implements IFigure {
         }
         return result;
     }
-    public String findTemlate(IMoveCoord moveCoord)  {
+    public String findTemlate()  {
         return "";
     }
 }
 
 interface IFigure {
-    public String checkMove(IMoveCoord moveCoord, Board board);
-    public String findTemlate(IMoveCoord moveCoord);
+    public String checkMove(Board board);
+    public String findTemlate();
 }

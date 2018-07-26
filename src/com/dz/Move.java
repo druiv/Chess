@@ -135,11 +135,11 @@ public class Move {
                 break;
         }
 
-        result = Fig.findTemlate(moveCoord);
+        result = Fig.findTemlate();
         if (!result.isEmpty())
             return result;
 
-        result = Fig.checkMove(moveCoord, board);
+        result = Fig.checkMove(board);
         return result;
     }
 
