@@ -95,7 +95,7 @@ public class Move {
                     continue;
                 }
 
-                if ((!board.desk[r[3]][r[1]].isEmpty())
+                if ((!board.desk[r[3]][r[2]].isEmpty())
                         && ((colorFrom < 0 && colorTo < 0) || (colorFrom >= 0 && colorTo >= 0))) {
                     System.out.println("Фигура не может рубить своих");
                     continue;
