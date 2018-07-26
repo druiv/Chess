@@ -11,7 +11,7 @@ public class Board {
     public Board() {
     }
 
-    public void InitBoard(){
+    public void InitBoard() {
         for (int i = 2; i < 6; i++)
             for (int j = 0; j < 8; j++)
                 desk[i][j] = "";
@@ -61,4 +61,64 @@ public class Board {
         return true;
     }
 
+    //проверяем, атаковано ли данное поле указанной стороной, color = 1 белые, -1 черные
+    public boolean checkAttackSquare(int[] square, int color) {
+        int matrix[][] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1},//горизонтали и вертикали
+                {1, 1}, {-1, 1}, {-1, -1}, {1, -1},//диагонали
+                {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1, -2}, {-2, -1}, {-2, 1}, {-1, 2}};//ход коня
+
+        int[] tmp = {0, 0};
+        int colortmp;
+        String fig;
+        int step = 0;
+        String figtempl;
+
+        for (int[] m : matrix) {
+            tmp[0] = square[0];
+            tmp[1] = square[1];
+            step = 0;
+
+            while (true) {
+                tmp[0] = tmp[0] + m[0];
+                tmp[1] = tmp[1] + m[1];
+                step++;
+
+                if (tmp[0] < 0 || tmp[0] > 7 || tmp[1] < 0 || tmp[1] > 7) //вышли за границу
+                    break;
+
+                figtempl = getFigure(m);
+
+                if (figtempl.indexOf("К ") >= 0 && step > 1) //ход коня
+                    break;
+
+                if (!desk[tmp[0]][tmp[1]].isEmpty()) {
+
+                    colortmp = FIGURES.indexOf(desk[tmp[0]][tmp[1]].trim());
+                    if (colortmp < 0 && color > 0 || colortmp >= 0 && color < 0)//наткнулись на фигуру другого цвета
+                        break;
+
+                    fig = desk[tmp[0]][tmp[1]].toUpperCase();
+                    if (figtempl.indexOf(fig) >= 0) {
+                        if (("КР".equals(fig) && step == 1) || (!"КР".equals(fig))) {
+                            return true;
+                        }
+                    } else
+                        break;
+                }
+            }
+        }
+        return false;
+    }
+
+    private String getFigure(int[] t) {
+        String result = "";
+
+        if ((Math.abs(t[0]) == 1 && Math.abs(t[1]) == 2) || (Math.abs(t[0]) == 2 && Math.abs(t[1]) == 1)) //ход коня
+            result = "К "; //кириллица
+        else if (Math.abs(t[0]) == 1 && Math.abs(t[1]) == 1) // ход слона
+            result = "С Ф КР"; //кириллица
+        else if ((Math.abs(t[0]) == 1 && Math.abs(t[1]) == 0) || (Math.abs(t[0]) == 0 && Math.abs(t[1]) == 1)) // ход ладьи
+            result = "Л Ф КР"; //кириллица
+        return result;
+    }
 }

@@ -5,11 +5,9 @@ public class Test {
     public static void main(String[] args) {
         Board chessboard = new Board();
         chessboard.InitBoard();
-        chessboard.desk[1][0] = "";
-        chessboard.desk[1][1] = "";
-        chessboard.desk[1][2] = "";
-        chessboard.desk[1][4] = "";
-        chessboard.desk[6][0] = "";
+        chessboard.desk[4][0] = "л ";
+        chessboard.desk[3][7] = "Кр";
+        chessboard.desk[3][5] = "кр";
 
         chessboard.showBoard();
 

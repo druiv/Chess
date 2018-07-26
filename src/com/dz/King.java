@@ -38,7 +38,14 @@ public class King extends Figure implements IFigure {
 
     @Override
     public String checkMove(Board board) {
-        //TODO: проверить, что поле to не битое
-        return "";
+
+        String result = "";
+        int colorFrom = board.FIGURES.indexOf(board.desk[from[0]][from[1]].trim()); //colorFrom>=0 белые, <0 черные
+        int colorEnemy = colorFrom < 0 ? 1 : -1;
+
+        if (board.checkAttackSquare(to, colorEnemy))
+            result = "Под шах не ходят";
+
+        return result;
     }
 }
