@@ -16,21 +16,25 @@ public class Rook extends Figure implements IFigure {
     public String findTemlate(IMoveCoord moveCoord) {
         int dx = to[1] - from[1];
         int dy = to[0] - from[0];
-        String result = "";
 
-        dx = dx == 0 ? dx : dx / Math.abs(dx);
-        dy = dy == 0 ? dy : dy / Math.abs(dy);
+        //при ходе ладьи одно из перемещений должно равняться нулю
+        if (dx != 0 && dy != 0)
+            return "Так не ходят";
 
+        //ищем темплейт хода ладьи.
+        // В темплейте также одно из перемещений должно равняться нулю,
+        // а другое должно быть того же знака
         for (int i = 0; i < 4; i++) {
-            if (matrix[i][0] == dx && matrix[i][1] == dy) {
+            if (((matrix[i][0] == 0 && dx == 0) || (matrix[i][0] * dx > 0)) &&
+                    (matrix[i][1] == 0 && dy == 0) || (matrix[i][1] * dy > 0)) {
                 template = i;
                 break;
             }
         }
         if (template < 0)
-            result = "Так не ходят";
+            return "Так не ходят";
 
-        return result;
+        return "";
     }
 
     public String checkMove(IMoveCoord moveCoord, Board board) {
