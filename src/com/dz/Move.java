@@ -133,8 +133,11 @@ public class Move {
             case "С": //кириллица
                 Fig = new Bishop(moveCoord);
                 break;
-            case "Ф": //кириллица
+            case "Ф":
                 Fig = new Queen(moveCoord);
+                break;
+            case "КР": //кириллица
+                Fig = new King(moveCoord);
                 break;
         }
 
