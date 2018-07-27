@@ -134,7 +134,7 @@ public class Move {
                 }
                 if (square[0] == -1 || square[1] == -1) {
                     System.out.println("А где король?");
-                    continue;
+                    System.exit(0);
                 }
 
                 if (board2.checkAttackSquare(square, enemy)) {
@@ -192,6 +192,30 @@ public class Move {
         int[] t = moveCoord.getTo();
         board.desk[t[0]][t[1]] = board.desk[fr[0]][fr[1]];
         board.desk[fr[0]][fr[1]] = "";
+
+        //превращение пешки в ферзи
+        int colorTo = board.FIGURES.indexOf(board.desk[t[0]][t[1]].trim());
+        if ("П".equals(board.desk[t[0]][t[1]].trim().toUpperCase()) &&
+                ((colorTo >= 0 && t[0] == 7) || (colorTo < 0 && t[0] == 0))) {
+            System.out.println("Какую фигуру ставим?");
+            Scanner in = new Scanner(System.in);
+
+            try {
+                while (in.hasNextLine()) {
+                    String mv = in.nextLine().trim().toUpperCase();
+                    if ("ФЛКС".indexOf(mv.trim().toUpperCase()) >= 0) {
+                        board.desk[t[0]][t[1]] = (colorTo >= 0 ? mv.toUpperCase() : mv.toLowerCase()).trim() + " ";
+                        break;
+                    } else {
+                        System.out.println("Вы можете выбрать Ф, Л, К, С");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+
+        }
     }
 }
 
