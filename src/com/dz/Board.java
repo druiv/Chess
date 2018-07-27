@@ -72,6 +72,7 @@ public class Board {
         String fig;
         int step = 0;
         String figtempl;
+        int sign;
 
         for (int[] m : matrix) {
             tmp[0] = square[0];
@@ -99,9 +100,18 @@ public class Board {
 
                     fig = desk[tmp[0]][tmp[1]].toUpperCase();
                     if (figtempl.indexOf(fig) >= 0) {
-                        if (("КР".equals(fig) && step == 1) || (!"КР".equals(fig))) {
+                        if ("П КР".indexOf(fig) < 0)
                             return true;
-                        }
+                        else if ("КР".equals(fig) && step == 1)
+                            return true;
+                        else if ("П ".equals(fig) && step == 1) {
+                            sign = desk[tmp[0]][tmp[1]].trim().equals("П") ? 1 : -1;
+                            if (colortmp == sign)//пешка бьет только вперед
+                                return true;
+                            else
+                                break;
+                        } else
+                            break;
                     } else
                         break;
                 }
@@ -116,7 +126,7 @@ public class Board {
         if ((Math.abs(t[0]) == 1 && Math.abs(t[1]) == 2) || (Math.abs(t[0]) == 2 && Math.abs(t[1]) == 1)) //ход коня
             result = "К "; //кириллица
         else if (Math.abs(t[0]) == 1 && Math.abs(t[1]) == 1) // ход слона
-            result = "С Ф КР"; //кириллица
+            result = "П С Ф КР"; //кириллица
         else if ((Math.abs(t[0]) == 1 && Math.abs(t[1]) == 0) || (Math.abs(t[0]) == 0 && Math.abs(t[1]) == 1)) // ход ладьи
             result = "Л Ф КР"; //кириллица
         return result;
