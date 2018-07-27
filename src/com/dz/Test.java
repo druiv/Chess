@@ -4,10 +4,16 @@ public class Test {
 
     public static void main(String[] args) {
         Board chessboard = new Board();
+
         chessboard.InitBoard();
-        chessboard.desk[4][0] = "л ";
-        chessboard.desk[3][7] = "Кр";
-        chessboard.desk[3][5] = "кр";
+
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                chessboard.desk[i][j] = "";
+
+        chessboard.desk[7][4] = "кр";
+        chessboard.desk[3][5] = "Кр";
+        chessboard.desk[3][4] = "п ";
 
         chessboard.showBoard();
 
