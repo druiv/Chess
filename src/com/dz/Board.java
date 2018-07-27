@@ -72,7 +72,6 @@ public class Board {
         String fig;
         int step = 0;
         String figtempl;
-        int sign;
 
         for (int[] m : matrix) {
             tmp[0] = square[0];
@@ -100,17 +99,11 @@ public class Board {
 
                     fig = desk[tmp[0]][tmp[1]].toUpperCase();
                     if (figtempl.indexOf(fig) >= 0) {
-                        if ("П КР".indexOf(fig) < 0)
+                        if (("П КР".indexOf(fig) < 0) ||//пешка и король особые случаи
+                                ("КР".equals(fig) && step == 1) ||//король на расстоянии 1 клетка
+                                ("П ".equals(fig) && step == 1 && color == -m[0])) //пешка на расстоянии 1 клетка по диагонали вперед
                             return true;
-                        else if ("КР".equals(fig) && step == 1)
-                            return true;
-                        else if ("П ".equals(fig) && step == 1) {
-                            sign = desk[tmp[0]][tmp[1]].trim().equals("П") ? 1 : -1;
-                            if (colortmp == sign)//пешка бьет только вперед
-                                return true;
-                            else
-                                break;
-                        } else
+                        else
                             break;
                     } else
                         break;
