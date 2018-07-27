@@ -109,6 +109,41 @@ public class Move {
                     continue;
                 }
 
+                //проверим, не будет ли после хода у нас король под шахом
+                Board board2 = new Board(); // копируем положение в новую доску
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        board2.desk[i][j] = board.desk[i][j];
+                    }
+                }
+                board2.desk[r[3]][r[2]] = board.desk[r[1]][r[0]];//делаем ход на 2-й доске
+                board2.desk[r[1]][r[0]] = "";
+
+                String str = colorFrom >= 0 ? "Кр" : "кр";
+                int enemy = colorFrom >= 0 ? -1 : 1;
+                int[] square = {-1, -1};
+
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (str.equals(board2.desk[i][j])) {//ищем своего короля
+                            square[0] = i;
+                            square[1] = j;
+                            break;
+                        }
+                    }
+                }
+                if (square[0] == -1 || square[1] == -1) {
+                    System.out.println("А где король?");
+                    continue;
+                }
+
+                if (board2.checkAttackSquare(square, enemy)) {
+                    System.out.println("Ну кто так ходит! После хода король оказывается под шахом.");
+                    continue;
+                }
+                //конец проверки не будет ли после хода у нас король под шахом
+
+
                 isCheked = true;
 
             }
