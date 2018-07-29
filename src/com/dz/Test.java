@@ -13,7 +13,8 @@ public class Test {
 
         chessboard.desk[7][4] = "кр";
         chessboard.desk[3][5] = "Кр";
-        chessboard.desk[3][4] = "п ";
+        chessboard.desk[1][0] = "п ";
+        chessboard.desk[6][0] = "П ";
 
         chessboard.showBoard();
 
